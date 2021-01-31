@@ -1,0 +1,17 @@
+{% extends 'registration/registration_base.html' %}
+
+{% block registration %}
+
+<h2>Login</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Login">
+</form>
+
+<a href="{% url 'group_listview' %}">Back to dashboard</a>
+<a href="{% url 'password_reset' %}">Reset password</a>
+<a href="{% url 'register' %}">Register</a>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'users/views/detail_views/detail_base.html' %}
+
+{% block detail %}
+
+    {% if user.is_authenticated %}
+    {% if user.username  == category.user.username %}
+
+    <!-- Title and navigation buttons -->
+    <div class="p-3">
+        <h1>"{{ category }}" sessions:</h1>
+        <div class="row">
+            <div class="col">
+                <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="{% url 'category_listview' project %}"><i class="material-icons pmd-sm">Go back</i></a>
+                <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="{% url 'add_session_form' project category %}"><i class="material-icons pmd-sm">New Session</i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="row">
+        {% for session in sessions %}
+        <div class="col-sm-6 p-1">
+        <!-- <a href="category/{{ category.category_name }}"> -->
+            <a href="{% url 'category_dashboard' project category %}">
+            
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ session.session_date }}</h5>
+                    <p class="card-text">Time: {{ session.session_time }} minutes.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    {% endfor %}
+
+    {% else %}
+        {{user.username}}
+        {{category.user}}
+    {% endif %}
+    {% else %}
+    {% endif %}
+
+
+{% endblock %}

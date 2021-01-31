@@ -1,0 +1,7 @@
+<form method="post">
+    <div class="form-group">
+        {% csrf_token %}
+        {{ newcategoryform }}
+    </div>
+    <input type="submit" class="btn btn-primary" value="Submit" name="newcategory">
+</form>

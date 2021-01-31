@@ -1,0 +1,15 @@
+<!-- Spacer -->
+<div class="mb-5 p-1"></div>
+
+<footer class="footer mt-auto py-2 bg-light fixed-bottom">
+    <!-- Light raised circle button with ripple effect -->
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="{% url 'category_dashboard' project category %}"><i class="material-icons pmd-sm">Dashboard</i></a>
+                <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="{% url 'category_sessions' project category %}"><i class="material-icons pmd-sm">Sessions</i></a>
+                <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="{% url 'category_milestones' project category %}"><i class="material-icons pmd-sm">Milestones</i></a>
+            </div>
+        </div>
+    </div>
+</footer>

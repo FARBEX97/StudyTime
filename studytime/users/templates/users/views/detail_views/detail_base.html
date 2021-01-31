@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="flex-fill">
+        <div class="container">
+            {% block detail %}
+            {% endblock %}
+        </div>
+    </main>
+{% include 'users/views/detail_views/detail_footer.html' %}
+
+{% endblock %}

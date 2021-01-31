@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="flex-fill">
+    <div class="container">
+        {% if categories %}
+
+        <div class="p-3">
+            <h2>"{{ project }}" categories:</h2>
+            <div class="row">
+                <div class="col">
+                    <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="/.."><i class="material-icons pmd-sm">Go back</i></a>
+                    <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="{% url 'del_category' project %}"><i class="material-icons pmd-sm">Delete Category</i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for category in categories %}
+            <div class="col-sm-6 p-1">
+                <a href="{% url 'category_dashboard' project category %}">
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ category.category_name }}</h5>
+                        <p class="card-text">Project: {{ category.project }}</p>
+                        <p class="card-text">Total time: {{ category.get_total_time }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="p-3">
+            <div class="row">
+                <div class="col text-center">
+                    <h2>"{{ project }}" is empty</h2>
+                    <p>Create your first category!</p>
+                    <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="{% url 'add_category' project %}"><i class="material-icons pmd-sm">New Category</i></a>
+                    <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="/.."><i class="material-icons pmd-sm">Go back</i></a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</main>
+
+
+<!-- Spacer -->
+<div class="mb-5 p-1"></div>
+
+<footer class="footer mt-auto py-2 bg-light fixed-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="{% url 'add_category' project %}"><i class="material-icons pmd-sm">New Category</i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}

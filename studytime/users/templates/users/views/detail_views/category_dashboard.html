@@ -1,0 +1,50 @@
+{% extends 'users/views/detail_views/detail_base.html' %}
+
+{% block detail %}
+    {% if user.is_authenticated %}
+        {% if user.username  == category.user.username %}
+        <div class="p-3">
+            <h1>"{{ category }}" dashboard:</h1>
+            <div class="row">
+                <div class="col">
+                    <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="{% url 'category_listview' project %}"><i class="material-icons pmd-sm">Go back</i></a>
+                    <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="{% url 'add_milestone_form' project category %}"><i class="material-icons pmd-sm">Add Milestone</i></a>
+                    <a class="btn pmd-btn-fab pmd-ripple-effect btn-light pmd-btn-raised" type="button" href="{% url 'add_session_form' project category %}"><i class="material-icons pmd-sm">Add Session</i></a>
+                </div>
+            </div>
+        </div>
+        <div class="p-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>General</h2>
+                    <p class="lead">Project: {{ category.project }}.</p>
+                    <p class="lead">Total time: {{ category.get_total_time }} minutes.</p>
+                    <p class="lead">Total Sessions: {{category.get_total_sessions }}.</p>
+                </div>
+                {% if category.get_first_session_date %}
+                <div class="col-md-4">
+                    <h3>Sessions</h3>
+                    <p class="">First Session: {{category.get_first_session_date }}.</p>
+                    <p class="">Last Session: {{category.get_last_session_date }}.</p>
+                </div>
+                {% endif %}
+                {% if category.get_last_milestone_title %}
+                <div class="col-md-4">
+                    <h3>Last Milestone:</h3>
+                    <p class="">{{category.get_last_milestone_title }} on {{category.get_last_milestone_date }}.</p>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+
+
+        {% else %}
+        {{user.username}}
+        {{category.user}}
+        {% endif %}
+    {% else %}
+    hola
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,9 @@
+
+<form method="post">
+    <div class="form-group">
+
+        {% csrf_token %}
+        {{ newmilestoneform }}
+    </div>
+    <input type="submit" class="btn btn-primary" value="Submit" name="newmilestone">
+</form>
